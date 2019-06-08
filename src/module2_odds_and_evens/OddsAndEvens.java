@@ -69,6 +69,8 @@ public class OddsAndEvens {
 		
 		System.out.println("--------------------------------------------------");
 		
+		System.out.println("Press ENTER to exit: ");
+		option = input.next();
 	
 		
 	}
