@@ -9,76 +9,151 @@ public class Crypto {
 
 		Scanner input = new Scanner(System.in);
 		String originalText = "";
+		int shift = 0;
 		
+		/*
 		System.out.print("Enter a text to encrypt: ");
 		originalText = input.nextLine();
 		System.out.println("Normalized text: " + normalizeText(originalText));
-	}
+		*/
 		
-/*	Part 1 - Normalize Text
-	The first thing we will do is normalize our input message so that it’s easier to work with.
+		System.out.print("Enter the shift value: ");
+		shift = input.nextInt();
+		caesarify ("A", shift);
+		
+		
+	}
 
-	Write a method called normalizeText() which does the following:
-
-	1. Removes all the spaces from your text
-	2. Remove any punctuation (. , : ; ’ ” ! ? ( ) )
-	3. Turn all lower-case letters into upper-case letters
-	4. Return the result.
-	The call
-
-	normalizeText("This is some \"really\" great. (Text)!?")
-	should return
-
-	“THISISSOMEREALLYGREATTEXT”
-*/
+	/*
+	 * Part 1 - Normalize Text
+	 * 
+	 * The first thing we will do is normalize our input
+	 * message so that it’s easier to work with.
+	 * 
+	 * Write a method called normalizeText() which does the following:
+	 * 
+	 * 1. Removes all the spaces from your text 2. Remove any punctuation (. , : ; ’
+	 * ” ! ? ( ) ) 3. Turn all lower-case letters into upper-case letters 4. Return
+	 * the result. The call
+	 * 
+	 * normalizeText("This is some \"really\" great. (Text)!?") should return
+	 * 
+	 * “THISISSOMEREALLYGREATTEXT”
+	 */
 
 	public static String normalizeText(String originalText) {
-			String encryptedText = "";
+			String normalizedText = "";
+			String currentLetter = "";
 			int counter = 0;
 						
 			for(counter = 0;counter < originalText.length();++counter) {
-				if (!" .,:;’”!¿?()".contains(originalText.substring(counter,counter + 1))) {
-					encryptedText = encryptedText + originalText.substring(counter, counter + 1).toUpperCase();
+				currentLetter = originalText.substring(counter,counter + 1).toUpperCase();
+				if (!" .,:;’”¡!¿?()\"".contains(currentLetter)) {
+					normalizedText = normalizedText + currentLetter;
 				}
 			}
 			
-			return encryptedText;
+			return normalizedText;
 	}
 
-
-/*	Part 2 - Caesar Cipher
-	Next we’ll be writing a Caesar Cipher. The Caesar cipher is just about the simplest encryption algorithm out there. A Caesar encription "shifts" each individual character forward by a certain number or "key". Each letter in the alphabet is shifted to the letter in the alphabet that is "key" places past the original letter. With a shift value of +1, the string “ILIKEZOOS” would be rendered as “JMJLFAPPT.”
-
-	Write a method called caesarify that takes two parameters. The first argument is a string you want to encrypt, and the second is an integer that contains the shift value or "key". The function should return a string, which is the input string encrypted with the Caesar cypher using the shift value passed in its second argument. You may assume that the input string is normalized.
-
-	Note that the alphabet “wraps around”, so with a shift value of +1 the “Z” in ZOOS became an A.
-	You can also have negative shift values, which cause the alphabet to previous letters. With a -1 shift, the string “ILIKEAPPLES” would turn into “HKHJDZOOKDR.”
-	We will provide you with a function called shiftAlphabet. This function takes one argument, an integer to specify the shift value, and returns a string, which is the uppercase alphabet shifted by the shift value. So if you call shiftAlphabet(2), you will get back the following string: “CDEFGHIJKLMNOPQRSTUVWXYZAB”
-
-	Here is the implementation for shiftAlphabet, which you can just paste into your java file:
-
-	public static String shiftAlphabet(int shift) {
-	    int start = 0;
-	    if (shift < 0) {
-	        start = (int) 'Z' + shift + 1;
-	    } else {
-	        start = 'A' + shift;
-	    }
-	    String result = "";
-	    char currChar = (char) start;
-	    for(; currChar <= 'Z'; ++currChar) {
-	        result = result + currChar;
-	    }
-	    if(result.length() < 26) {
-	        for(currChar = 'A'; result.length() < 26; ++currChar) {
-	            result = result + currChar;
-	        }
-	    }
-	    return result;
+	
+	/*
+	 * ( The next section is somehow mentioned in the video explanation
+	 * of the assignment, but not included in the written explanation.
+	 * Someone somehow got it and shared it in the lesson's discussion )
+	 * 
+	 * Our next method will be called obify. This will take in the normalized text
+	 * and insert a capital O and capital B in front of every vowel, including y,
+	 * and return the obify text.
+	 */
+	
+	
+	
+	/*
+	 * Part 2 - Caesar Cipher
+	 * 
+	 * Next we’ll be writing a Caesar Cipher. The Caesar
+	 * cipher is just about the simplest encryption algorithm out there. A Caesar
+	 * encription "shifts" each individual character forward by a certain number or
+	 * "key". Each letter in the alphabet is shifted to the letter in the alphabet
+	 * that is "key" places past the original letter. With a shift value of +1, the
+	 * string “ILIKEZOOS” would be rendered as “JMJLFAPPT.”
+	 * 
+	 * Write a method called caesarify that takes two parameters. The first argument
+	 * is a string you want to encrypt, and the second is an integer that contains
+	 * the shift value or "key". The function should return a string, which is the
+	 * input string encrypted with the Caesar cypher using the shift value passed in
+	 * its second argument. You may assume that the input string is normalized.
+	 * 
+	 * Note that the alphabet “wraps around”, so with a shift value of +1 the “Z” in
+	 * ZOOS became an A. You can also have negative shift values, which cause the
+	 * alphabet to previous letters. With a -1 shift, the string “ILIKEAPPLES” would
+	 * turn into “HKHJDZOOKDR.” We will provide you with a function called
+	 * shiftAlphabet. This function takes one argument, an integer to specify the
+	 * shift value, and returns a string, which is the uppercase alphabet shifted by
+	 * the shift value. So if you call shiftAlphabet(2), you will get back the
+	 * following string: “CDEFGHIJKLMNOPQRSTUVWXYZAB”
+	 * 
+	 * Here is the implementation for shiftAlphabet, which you can just paste into
+	 * your java file:
+	 * 
+	 * public static String shiftAlphabet(int shift) { int start = 0; if (shift < 0)
+	 * { start = (int) 'Z' + shift + 1; } else { start = 'A' + shift; } String
+	 * result = ""; char currChar = (char) start; for(; currChar <= 'Z'; ++currChar)
+	 * { result = result + currChar; } if(result.length() < 26) { for(currChar =
+	 * 'A'; result.length() < 26; ++currChar) { result = result + currChar; } }
+	 * return result; }
+	 */
+	
+	public static String caesarify (String normalizedText, int shift) {
+		
+		String unshiftedAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		String shiftedAlphabet = "";
+		int alphabetLength = unshiftedAlphabet.length();
+		String currentLetter = "";
+		String caesarifiedText = "";
+		
+		int start = 0;
+		int end = 0;
+		
+		// "ABC",1
+		
+		for (int count = 0; count < alphabetLength; count++) {
+			
+			if (shift >= 0) {
+				start = (count + shift) % alphabetLength;
+			} else {
+				start = (alphabetLength + count + ( shift % alphabetLength) ) % alphabetLength;
+			}
+						
+						
+			System.out.println("Count = " + count + " Start: " + start + " End: " + (start + 1) + " Shifted Alphabet so far: " + shiftedAlphabet);
+			
+			shiftedAlphabet += unshiftedAlphabet.substring(start, start + 1);
+		
+			System.out.println("Count = " + count + " Start: " + start + " End: " + (start + 1) + " Shifted Alphabet so far: " + shiftedAlphabet);
+		
+		}
+		
+		System.out.println("Shifted alphabet: " + shiftedAlphabet);
+		
+/*		
+		for (int count = 0; count < normalizedText.length(); count++) {
+			
+			currentLetter = normalizedText.substring(count, count + 1)
+			
+			currentLetterShifted = unshiftedAlphabet.
+			indexOf()
+			substring()
+					
+			caesarifiedText += 
+*/		
+		return caesarifiedText;
 	}
-*/	
-	
-	
+		
+		
+		
+
 
 
 	 
