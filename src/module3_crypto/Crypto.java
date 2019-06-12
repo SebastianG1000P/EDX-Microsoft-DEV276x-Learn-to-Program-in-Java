@@ -5,9 +5,12 @@ import java.util.Scanner;
 
 public class Crypto {
 
+	public static final String unshiftedAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	
 	public static void main (String[] args) {
 
 		Scanner input = new Scanner(System.in);
+		Scanner input2 = new Scanner(System.in);
 		String originalText = "";
 		int shift = 0;
 		
@@ -19,9 +22,15 @@ public class Crypto {
 		
 		System.out.print("Enter the shift value: ");
 		shift = input.nextInt();
-		caesarify ("A", shift);
+		System.out.println("Shifted alphabet: " + shiftAlphabet (shift));
 		
+		System.out.print("Enter a test to encrypt: ");
+		originalText = input2.nextLine();
+		System.out.println("Normalized text: " + normalizeText(originalText));
+		System.out.println("Caesarified text: " + caesarify(normalizeText(originalText), shift));
 		
+		input.close();
+		input2.close();
 	}
 
 	/*
@@ -97,62 +106,87 @@ public class Crypto {
 	 * Here is the implementation for shiftAlphabet, which you can just paste into
 	 * your java file:
 	 * 
-	 * public static String shiftAlphabet(int shift) { int start = 0; if (shift < 0)
-	 * { start = (int) 'Z' + shift + 1; } else { start = 'A' + shift; } String
-	 * result = ""; char currChar = (char) start; for(; currChar <= 'Z'; ++currChar)
-	 * { result = result + currChar; } if(result.length() < 26) { for(currChar =
-	 * 'A'; result.length() < 26; ++currChar) { result = result + currChar; } }
-	 * return result; }
+		public static String shiftAlphabet(int shift) {
+		    int start = 0;
+		    if (shift < 0) {
+		        start = (int) 'Z' + shift + 1;
+		    } else {
+		        start = 'A' + shift;
+		    }
+		    String result = "";
+		    char currChar = (char) start;
+		    for(; currChar <= 'Z'; ++currChar) {
+		        result = result + currChar;
+		    }
+		    if(result.length() < 26) {
+		        for(currChar = 'A'; result.length() < 26; ++currChar) {
+		            result = result + currChar;
+		        }
+		    }
+		    return result;
+		}
 	 */
 	
-	public static String caesarify (String normalizedText, int shift) {
+	public static String shiftAlphabet (int shift) {
 		
-		String unshiftedAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		String shiftedAlphabet = "";
 		int alphabetLength = unshiftedAlphabet.length();
-		String currentLetter = "";
-		String caesarifiedText = "";
-		
 		int start = 0;
-		int end = 0;
-		
-		// "ABC",1
-		
 		for (int count = 0; count < alphabetLength; count++) {
-			
 			if (shift >= 0) {
 				start = (count + shift) % alphabetLength;
 			} else {
 				start = (alphabetLength + count + ( shift % alphabetLength) ) % alphabetLength;
 			}
-						
-						
-			System.out.println("Count = " + count + " Start: " + start + " End: " + (start + 1) + " Shifted Alphabet so far: " + shiftedAlphabet);
-			
 			shiftedAlphabet += unshiftedAlphabet.substring(start, start + 1);
+		}
+		return shiftedAlphabet;
+	}
+	
+
+	public static String caesarify (String normalizedText, int shift) {
+		String caesarifiedText = "";
+		String currentLetterUnshifted = "";
+		String currentLetterShifted = "";
+		String shiftedAlphabet = "";
+		int unshiftedLetterIndex = 0;
 		
-			System.out.println("Count = " + count + " Start: " + start + " End: " + (start + 1) + " Shifted Alphabet so far: " + shiftedAlphabet);
+		shiftedAlphabet = shiftAlphabet(shift);
 		
+		/*Unshifted: ABC	0 = A;	1 = B;	2 = C		24 = Y;		25 = Z
+		 * Shift:     1		
+		 * Shifted:  BCD	0 = B;	1 = C;	2 = D		24 = Z:		25 = A
+		 * 
+		 * NormText: ABY	0 = A;	1 = B;	2 = Y		
+		 * CaeText:  BCZ	0 = B;	1 = C;	2 = Z
+		 * 
+		 */
+		
+		for (int count = 0; count < normalizedText.length(); count++) {
+			currentLetterUnshifted = normalizedText.substring(count, count + 1);
+			unshiftedLetterIndex = unshiftedAlphabet.indexOf(currentLetterUnshifted);
+			
+			currentLetterShifted = shiftedAlphabet.substring(unshiftedLetterIndex, unshiftedLetterIndex + 1);
+			
+			caesarifiedText += currentLetterShifted;
 		}
 		
-		System.out.println("Shifted alphabet: " + shiftedAlphabet);
-		
-/*		
-		for (int count = 0; count < normalizedText.length(); count++) {
-			
-			currentLetter = normalizedText.substring(count, count + 1)
-			
-			currentLetterShifted = unshiftedAlphabet.
-			indexOf()
-			substring()
-					
-			caesarifiedText += 
-*/		
 		return caesarifiedText;
 	}
 		
+	
+	
+	/*		
+	for (int count = 0; count < normalizedText.length(); count++) {
 		
+		currentLetter = normalizedText.substring(count, count + 1)
 		
+		currentLetterShifted = unshiftedAlphabet.
+		indexOf()
+		substring()
+				
+		caesarifiedText += 
+*/		
 
 
 
