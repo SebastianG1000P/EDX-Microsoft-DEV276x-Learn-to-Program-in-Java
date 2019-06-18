@@ -207,7 +207,7 @@ public class Crypto {
 	  distinguish between an X that was part of the code and a padding X.
 	 */
 	
-	public static String groupify (String caesarifiedText, int size) {
+	public static String groupify (String caesarifiedText, int groupSize) {
 		String groupifiedText = "";
 		int count = 0;
 		String currentLetter = "";
@@ -218,14 +218,14 @@ public class Crypto {
 			currentLetter = caesarifiedText.substring(count, count + 1);
 			groupifiedText += currentLetter;
 			
-			if ( (count + 1) % size == 0) {
+			if ( (count + 1) % groupSize == 0) {
 				groupifiedText += " ";
 			}
 		}
-		if (size < caesarifiedText.length()) {
-			padding = size - ( caesarifiedText.length() % size);
+		if (groupSize < caesarifiedText.length() && ( (caesarifiedText.length() % groupSize) != 0 ) ) {
+			padding = groupSize - ( caesarifiedText.length() % groupSize);
 		} else {
-			padding = size - caesarifiedText.length();
+			padding = groupSize - caesarifiedText.length();
 		}
 		
 		for (count = 0; count < padding; count++) {
