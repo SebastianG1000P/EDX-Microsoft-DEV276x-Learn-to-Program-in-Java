@@ -15,27 +15,21 @@ public class Crypto {
 		int shift = 0;
 		int size = 0;
 		
-		/*
 		System.out.print("Enter a text to encrypt: ");
-		originalText = input.nextLine();
-		System.out.println("Normalized text: " + normalizeText(originalText));
-		*/
-		
-		System.out.print("Enter the shift value: ");
+		originalText = inputLine.nextLine();
+		System.out.print("Enter shift value: ");
 		shift = input.nextInt();
-		System.out.println("Shifted alphabet: " + shiftAlphabet (shift));
-		
-		System.out.print("Enter a test to encrypt: ");
-		originalText = inputLine.nextLine();
-		System.out.println("Normalized text: " + normalizeText(originalText));
-		System.out.println("Caesarified text: " + caesarify(normalizeText(originalText), shift));
-		
-		System.out.print("Enter text to groupify: ");
-		originalText = inputLine.nextLine();
 		System.out.print("Enter group size: ");
 		size = input.nextInt();
+		System.out.println("The encrypted text is: " + encryptString(originalText, shift, size));
 		
-		System.out.println("Groupified text: " + groupify(originalText, size));
+		System.out.println();
+		
+		System.out.print("Enter an encrypted text to decrypt: ");
+		originalText = inputLine.nextLine();
+		System.out.print("Enter the shift value used to encrypt the text: ");
+		shift = input.nextInt();
+		System.out.println("The (normalized) decrypted text is: " + decryptString(originalText, shift));
 		
 		input.close();
 		inputLine.close();
@@ -60,6 +54,7 @@ public class Crypto {
 	  
 	  “THISISSOMEREALLYGREATTEXT”
 	 */
+	
 
 	public static String normalizeText(String originalText) {
 			String normalizedText = "";
@@ -69,7 +64,7 @@ public class Crypto {
 			for(counter = 0;counter < originalText.length();++counter) {
 				currentLetter = originalText.substring(counter,counter + 1).toUpperCase();
 				if (!" .,:;’”¡!¿?()\"".contains(currentLetter)) {
-					normalizedText = normalizedText + currentLetter;
+					normalizedText += currentLetter;
 				}
 			}
 			
@@ -218,10 +213,11 @@ public class Crypto {
 			currentLetter = caesarifiedText.substring(count, count + 1);
 			groupifiedText += currentLetter;
 			
-			if ( (count + 1) % groupSize == 0) {
+			if ( ( (count + 1) % groupSize == 0 ) && ( (count + 1) < caesarifiedText.length() ) ) {
 				groupifiedText += " ";
 			}
 		}
+		
 		if (groupSize < caesarifiedText.length() && ( (caesarifiedText.length() % groupSize) != 0 ) ) {
 			padding = groupSize - ( caesarifiedText.length() % groupSize);
 		} else {
@@ -247,7 +243,15 @@ public class Crypto {
 	  to break the cyphertext into groups of size letters. Return the result
 	 */
 	
-	
+	public static String encryptString (String originalText, int shift, int groupSize) {
+		String encryptedString = "";
+		
+		encryptedString = normalizeText(originalText);
+		encryptedString = caesarify(encryptedString, shift);
+		encryptedString = groupify(encryptedString, groupSize);
+		
+		return encryptedString;
+	}
 	
 	/*
 	 * **************************************************
@@ -266,11 +270,33 @@ public class Crypto {
 	  
 	  So if you were to call
 	  
-	  String cyphertext = encryptString(“Who will win the election?”, 5, 3); String
-	  plaintext = decryptString(cyphertext, 5); … then you’ll get back the
-	  normalized input string “WHOWILLWINTHEELECTION”.
+	  String cyphertext = encryptString(“Who will win the election?”, 5, 3);
+	  String plaintext = decryptString(cyphertext, 5);
+	   … then you’ll get back the normalized input string “WHOWILLWINTHEELECTION”.
 	 */
 
 	
+	public static String ungroupify(String encryptedText) {
+		String ungroupifiedText = "";
+		String currentLetter = "";
+		int counter = 0;
+					
+		for(counter = 0;counter < encryptedText.length();++counter) {
+			currentLetter = encryptedText.substring(counter,counter + 1);
+			if (!" x".contains(currentLetter)) {
+				ungroupifiedText += currentLetter;
+			}
+		}
+		return ungroupifiedText;
+}
+	
+	public static String decryptString ( String originalText, int shift) {
+		String decryptedText = "";
+		
+		decryptedText = ungroupify(originalText);
+		decryptedText = caesarify(decryptedText, - shift);
+		
+		return decryptedText;
+	}
 	
 }
