@@ -18,32 +18,28 @@ public static boolean wall = false;
 	public static void main (String[] args) {
 		
 		intro();
-		myMap.printMap();
-		
+				
 		do {
 			userMove();
-		} while ( direction != "X");
-		System.out.println("Bye!");
+		} while ( !( (direction.equals("X")) || (myMap.didIWin()) ) );
 
-/*
-		System.out.println("TEST");
-		myMap.printMap();
-		myMap.moveRight();
-		myMap.printMap();
-//		myMap.moveRight();
-//		myMap.moveDown();
-//		myMap.moveUp();
-		myMap.moveLeft();
-		myMap.printMap();
-		//myMap.moveDown();
-		myMap.moveUp();
-		myMap.printMap();
-*/		
+		if (myMap.didIWin()) {
+			System.out.println();
+			System.out.println("*******************************************");
+			System.out.println("* Congratulations, you made it out alive! *");
+			System.out.println("*******************************************");
+			System.out.println();
+		} else {
+			System.out.println("Bye!");
+		}
+		
+		
+
 	}
 	
 	
 	public static void intro() {
-		int choice = 0;
+		int keyboardLayout = 0;
 		
 		System.out.println("Welcome to Maze Runner!");
 		System.out.println();
@@ -51,12 +47,14 @@ public static boolean wall = false;
 		System.out.println("Choose a set of keys to control the game:");
 		System.out.println("1.- U (up), D (down), L (left), R (right)");
 		System.out.println("2.- W (up), S (down), A (left), D (right)");
+		System.out.println();
+		
 		do {
 			System.out.print("Enter your choice (1/2): ");
-			choice = input.nextInt();
-		} while ( choice != 1 && choice != 2);
+			keyboardLayout = input.nextInt();
+		} while ( keyboardLayout != 1 && keyboardLayout != 2);
 		
-		if (choice == 1) {
+		if (keyboardLayout == 1) {
 			controls = "UDLRX";
 			up = "U";
 			down = "D";
@@ -71,7 +69,8 @@ public static boolean wall = false;
 		}
 		
 		System.out.println("Here is your current position:");
-		System.out.println();	
+		System.out.println();
+		myMap.printMap();
 	}
 	
 	
@@ -83,44 +82,81 @@ public static boolean wall = false;
 			direction = input.next().toUpperCase();
 		} while (!controls.contains(direction) );
 		
-		System.out.println("Direction: " + direction + " Up: " + up + " Down: " + down + " Left: " + left + " Right: " + right);
-		
-
 		if ( direction.equals(up) ) {
 			if (myMap.canIMoveUp()) {
 				myMap.moveUp();
 			} else {
-				wall = true;
+				if (myMap.isThereAPit("U")) {
+					navigatePit("U");
+				} else {
+					wall = true;
+				}
 			}
 		} else if (direction.equals(down) ) {
 			if (myMap.canIMoveDown()) {
 				myMap.moveDown();
 			} else {
-				wall = true;
+				if (myMap.isThereAPit("D")) {
+					navigatePit("D");
+				} else {
+					wall = true;
+				}
 			}
 		} else if (direction.equals(left) ) {
 			if (myMap.canIMoveLeft()) {
 				myMap.moveLeft();
 			} else {
-				wall = true;
+				if (myMap.isThereAPit("L")) {
+					navigatePit("L");
+				} else {
+					wall = true;
+				}
 			}
 		} else if (direction.equals(right) ) {
 			if (myMap.canIMoveRight()) {
 				myMap.moveRight();
-				myMap.jumpOverPit("R");
 			} else {
-				wall = true;
+				if (myMap.isThereAPit("R")) {
+					navigatePit("R");
+				} else {
+					wall = true;
+				}
 			}
 		} 
 		
+		System.out.println();
+		
 		if (wall) {
 			System.out.println("Sorry, you've hit a wall.");
-			wall = false;
 		}
 		
+
 		myMap.printMap();
+		
+
+		wall = false;
 		
 		return direction;
 	}
+
+	public static void navigatePit(String dir) {
+		String jump = "";
+		
+		System.out.print("Watch out! There's a pit ahead. Jump it?: ");
+		jump = input.next().toUpperCase();
+		
+		if (jump.startsWith("Y")) {
+			if (direction.equals(up)) {
+				myMap.jumpOverPit("U");
+			} else if (direction.equals(down)) {
+				myMap.jumpOverPit("D");
+			} else if (direction.equals(left)) {
+				myMap.jumpOverPit("L");
+			} else if (direction.equals(right)) {
+				myMap.jumpOverPit("R");
+			}
+		}
+	}
+	
 	
 }
