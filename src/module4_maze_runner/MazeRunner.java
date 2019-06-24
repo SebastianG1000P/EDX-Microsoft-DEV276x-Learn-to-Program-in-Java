@@ -21,9 +21,19 @@ public static boolean wall = false;
 				
 		do {
 			userMove();
-		} while ( ( !direction.equals("X") ) || ( myMap.didIWin() ) );
+		} while ( !( (direction.equals("X")) || (myMap.didIWin()) ) );
 
-		System.out.println("Bye!");
+		if (myMap.didIWin()) {
+			System.out.println();
+			System.out.println("*******************************************");
+			System.out.println("* Congratulations, you made it out alive! *");
+			System.out.println("*******************************************");
+			System.out.println();
+		} else {
+			System.out.println("Bye!");
+		}
+		
+		
 
 	}
 	
@@ -37,6 +47,7 @@ public static boolean wall = false;
 		System.out.println("Choose a set of keys to control the game:");
 		System.out.println("1.- U (up), D (down), L (left), R (right)");
 		System.out.println("2.- W (up), S (down), A (left), D (right)");
+		System.out.println();
 		
 		do {
 			System.out.print("Enter your choice (1/2): ");
@@ -121,6 +132,7 @@ public static boolean wall = false;
 		
 
 		myMap.printMap();
+		
 
 		wall = false;
 		
@@ -129,8 +141,6 @@ public static boolean wall = false;
 
 	public static void navigatePit(String dir) {
 		String jump = "";
-		
-		System.out.println("Direction: " + direction + " Up: " + up + " Down: " + down + " Left: " + left + " Right: " + right);
 		
 		System.out.print("Watch out! There's a pit ahead. Jump it?: ");
 		jump = input.next().toUpperCase();
