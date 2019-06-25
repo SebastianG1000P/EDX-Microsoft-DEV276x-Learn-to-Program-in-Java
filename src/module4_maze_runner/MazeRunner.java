@@ -16,23 +16,50 @@ public static boolean wall = false;
 
 
 	public static void main (String[] args) {
+		int moves = 0;
+		boolean gameOver = false;
 		
 		intro();
 				
 		do {
 			userMove();
-		} while ( !( (direction.equals("X")) || (myMap.didIWin()) ) );
+			System.out.println("----------------------------------------");
+								
+			if (!gameOver) {
+				++moves;
+				System.out.println(movesMessage(moves));
+			}
+			
+			gameOver = ( direction.equals("X") || (myMap.didIWin()) || (moves == 100) );
+			
+		} while ( !gameOver );
 
+		if (direction.equals("X")) {
+			System.out.println();
+			System.out.println("You have cancelled the game.");
+			System.out.println("Bye.");
+			System.out.println();
+		}
+		
 		if (myMap.didIWin()) {
 			System.out.println();
 			System.out.println("*******************************************");
-			System.out.println("* Congratulations, you made it out alive! *");
+			System.out.println("  Congratulations, you made it out alive! ");
+			System.out.println("       And you did it in " + moves + " moves.");
 			System.out.println("*******************************************");
 			System.out.println();
-		} else {
-			System.out.println("Bye!");
 		}
 		
+		if (moves == 100) {
+			System.out.println();
+			System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
+			System.out.println("Sorry, but you didn't escape in time- you lose!");
+			System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
+			System.out.println();
+			System.out.println(" GAME OVER");
+			System.out.println();
+		}
+			
 		
 
 	}
@@ -42,6 +69,8 @@ public static boolean wall = false;
 		int keyboardLayout = 0;
 		
 		System.out.println("Welcome to Maze Runner!");
+		System.out.println();
+		System.out.println("You have 100 moves to escape the maze.");
 		System.out.println();
 		System.out.println("You can move up, down, left or right.");
 		System.out.println("Choose a set of keys to control the game:");
@@ -130,12 +159,8 @@ public static boolean wall = false;
 			System.out.println("Sorry, you've hit a wall.");
 		}
 		
-
 		myMap.printMap();
-		
-
 		wall = false;
-		
 		return direction;
 	}
 
@@ -158,5 +183,29 @@ public static boolean wall = false;
 		}
 	}
 	
+	
+	public static String movesMessage(int moves) {
+		String message = "";
+		
+		switch (moves) {
+			case 50:
+				message = "\nWarning: You have made 50 moves, you have 50 remaining before the maze exit closes.\n";
+				break;
+			case 75:
+				message = "\nAlert! You have made 75 moves, you only have 25 moves left to escape.\n";
+				break;				
+			case 90:
+				message = "\nDANGER! You have made 90 moves, you only have 10 moves left to escape!!\n";
+				break;				
+			case 100:
+				message = "\nOh no! You took too long to escape, and now the maze exit is closed FOREVER >:[\n";
+				break;				
+			default:
+				message = "";
+				break;				
+		}
+		
+		return message;
+	}
 	
 }

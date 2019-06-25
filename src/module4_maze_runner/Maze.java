@@ -53,7 +53,7 @@ public class Maze {
         }
         System.out.println();
     }
-
+    
     private boolean isThereAPit(int rowMove, int colMove) {
         if (col + colMove > 20 || col + colMove < 0 ||
                 row + rowMove > 20 || row + rowMove < 0  ) {
@@ -297,7 +297,7 @@ public class Maze {
         solution[6][4] = '0';
         solution[15][4] = '0';
         solution[9][10] = '0';
-        //solution[13][17] = '0';
+        // solution[13][17] = '0';  // Pit breaks the game by forcing player to jump into a wall.
         solution[13][15] = '0';
         solution[18][10] = '0';
     }
