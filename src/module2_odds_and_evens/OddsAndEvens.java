@@ -17,7 +17,7 @@ public class OddsAndEvens {
 		
 		// Greet the user and asks them to pick odds or evens.
 		
-		System.out.println("Let’s play a game called “Odds and Evens”.");
+		System.out.println("Let's play a game called 'Odds and Evens'.");
 		System.out.print("What is your name? ");
 		player = input.nextLine();
 		System.out.print("Hi " + player + ", which do you choose? (O)dds or (E)vens? ");
@@ -32,7 +32,7 @@ public class OddsAndEvens {
 		
 		// Asks the user how many fingers they'll play, and picks a random number of fingers for the computer to play.
 		
-		System.out.print("How many “fingers” do you put out? " );
+		System.out.print("How many \"fingers\" do you put out? " );
 		fingersPlayer = input.nextInt();
 		Random rand = new Random();		//		Creates object to obtain random numbers.
 		fingersComputer = rand.nextInt(6);
@@ -45,9 +45,8 @@ public class OddsAndEvens {
 		System.out.println(fingersPlayer + " + " + fingersComputer + " = " + fingersTotal);
 		
 		// Determines the winner.
-		// totalIsOdds = fingersTotal % 2 = 1? true: false;  // Using ternary operator, not taught yet by the Edx course. Somewhat verbose?.
 		
-		totalIsOdds = fingersTotal % 2 == 1;		// Method taught at Edx course.
+		totalIsOdds = fingersTotal % 2 == 1;
 		
 		if (totalIsOdds) {
 			System.out.println(fingersTotal + " is odds!");
@@ -68,10 +67,6 @@ public class OddsAndEvens {
 		System.out.println("That means " + winner + " wins!");
 		
 		System.out.println("--------------------------------------------------");
-		
-		System.out.println("Press ENTER to exit: ");
-		option = input.next();
-	
 		
 	}
 		
