@@ -45,7 +45,7 @@ public static boolean wall = false;
 			System.out.println();
 			System.out.println("*******************************************");
 			System.out.println("  Congratulations, you made it out alive! ");
-			System.out.println("       And you did it in " + moves + " moves.");
+			System.out.println("    You escaped the maze in " + moves + " moves.");
 			System.out.println("*******************************************");
 			System.out.println();
 		}
@@ -53,7 +53,8 @@ public static boolean wall = false;
 		if (moves == 100) {
 			System.out.println();
 			System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
-			System.out.println("Sorry, but you didn't escape in time- you lose!");
+			System.out.println("Sorry, but you didn't escape in time.");
+			System.out.println("You lose!");
 			System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
 			System.out.println();
 			System.out.println(" GAME OVER");

@@ -42,10 +42,10 @@ public class TripPlanner {
 	
 /*	PENDING
  * 
-	Part 6 – Hacker Problem - How Far?
-			For extra fun, calculate the distance between the user’s home and their travel destination using the Haversine formula. https://en.wikipedia.org/wiki/Haversine_formula To do this you’ll need to ask the user to enter the longitude and latitude for their home and their travel destination. You’ll also need to do some pretty fancy math.
+	Part 6 ï¿½ Hacker Problem - How Far?
+			For extra fun, calculate the distance between the userï¿½s home and their travel destination using the Haversine formula. https://en.wikipedia.org/wiki/Haversine_formula To do this youï¿½ll need to ask the user to enter the longitude and latitude for their home and their travel destination. Youï¿½ll also need to do some pretty fancy math.
 
-			To do fancy math in Java (cos, sin, squared etc…) you can use the Math Class. Here is the documentation for that: https://docs.oracle.com/javase/7/docs/api/java/lang/Math.html All the code to accomplish the hacker problem should be in its own method.
+			To do fancy math in Java (cos, sin, squared etcï¿½) you can use the Math Class. Here is the documentation for that: https://docs.oracle.com/javase/7/docs/api/java/lang/Math.html All the code to accomplish the hacker problem should be in its own method.
 */	
 	
 
@@ -146,7 +146,7 @@ public class TripPlanner {
 		area = input.nextDouble();
 		
 		areaMiles = (double)((int)(area * 0.386102159 * 100))/100;  // Round value to 2 decimals.
-		System.out.println("In miles2 that is " + areaMiles + " : " + area * 0.386102159 + ".");
+		System.out.println("In miles2 that is " + areaMiles + ".");
 		
 	}
 
@@ -154,10 +154,10 @@ public class TripPlanner {
 
 	/*	PENDING
 	 * 
-		Part 6 – Hacker Problem - How Far?
-				For extra fun, calculate the distance between the user’s home and their travel destination using the Haversine formula. https://en.wikipedia.org/wiki/Haversine_formula To do this you’ll need to ask the user to enter the longitude and latitude for their home and their travel destination. You’ll also need to do some pretty fancy math.
+		Part 6 ï¿½ Hacker Problem - How Far?
+				For extra fun, calculate the distance between the userï¿½s home and their travel destination using the Haversine formula. https://en.wikipedia.org/wiki/Haversine_formula To do this youï¿½ll need to ask the user to enter the longitude and latitude for their home and their travel destination. Youï¿½ll also need to do some pretty fancy math.
 
-				To do fancy math in Java (cos, sin, squared etc…) you can use the Math Class. Here is the documentation for that: https://docs.oracle.com/javase/7/docs/api/java/lang/Math.html All the code to accomplish the hacker problem should be in its own method.
+				To do fancy math in Java (cos, sin, squared etcï¿½) you can use the Math Class. Here is the documentation for that: https://docs.oracle.com/javase/7/docs/api/java/lang/Math.html All the code to accomplish the hacker problem should be in its own method.
 	*/	
 		
 	}
