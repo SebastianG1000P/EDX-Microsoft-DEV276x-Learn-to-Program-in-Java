@@ -6,10 +6,11 @@ import module3_crypto.Crypto;
 import module4_maze_runner.MazeRunner;
 
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Menu {
 
-	public static void main (String[] args) {
+	public static void main (String[] args) throws InterruptedException {
 		Scanner inputMenu = new Scanner(System.in);
 		int option = 0;
 		
@@ -43,7 +44,7 @@ public class Menu {
 					break;
 				case 5:
 					System.out.println("Bye!");
-					// wait
+					TimeUnit.SECONDS.sleep(2);
 					break;
 				default:
 					break;
@@ -54,6 +55,7 @@ public class Menu {
 		} while (option != 5);
 		
 		inputMenu.close();
+
 	}
 	
 }

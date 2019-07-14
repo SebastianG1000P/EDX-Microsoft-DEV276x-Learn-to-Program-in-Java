@@ -42,10 +42,10 @@ public class TripPlanner {
 	
 /*	PENDING
  * 
-	Part 6 � Hacker Problem - How Far?
-			For extra fun, calculate the distance between the user�s home and their travel destination using the Haversine formula. https://en.wikipedia.org/wiki/Haversine_formula To do this you�ll need to ask the user to enter the longitude and latitude for their home and their travel destination. You�ll also need to do some pretty fancy math.
+	Part 6 - Hacker Problem - How Far?
+			For extra fun, calculate the distance between the user's home and their travel destination using the Haversine formula. https://en.wikipedia.org/wiki/Haversine_formula To do this you'll need to ask the user to enter the longitude and latitude for their home and their travel destination. You'll also need to do some pretty fancy math.
 
-			To do fancy math in Java (cos, sin, squared etc�) you can use the Math Class. Here is the documentation for that: https://docs.oracle.com/javase/7/docs/api/java/lang/Math.html All the code to accomplish the hacker problem should be in its own method.
+			To do fancy math in Java (cos, sin, squared etc...) you can use the Math Class. Here is the documentation for that: https://docs.oracle.com/javase/7/docs/api/java/lang/Math.html All the code to accomplish the hacker problem should be in its own method.
 */	
 	
 
@@ -55,7 +55,9 @@ public class TripPlanner {
 		greeting();
 		timeAndBudget();
 		timeDifference();
-		countryArea();	
+		countryArea();
+		System.out.println();
+		System.out.println("Have a nice trip!");
 	}
 
 	public static void greeting() {
@@ -64,6 +66,7 @@ public class TripPlanner {
 		String destination;
 		
 		System.out.println("Welcome to Vacation Planner!");
+		System.out.println();
 		System.out.print("What is your name? ");
 		name = input.nextLine();
 		System.out.print("Nice to meet you, " + name + ". Where are you travelling to? ");
@@ -97,7 +100,7 @@ public class TripPlanner {
 		System.out.print("How much money, in USD, are you planning to spend on your trip? ");
 		money = input.nextDouble();
 		System.out.print("What is the three letter currency symbol for your travel destination? ");
-		currency = input.next();
+		currency = input.next().toUpperCase();
 		System.out.print("How many " + currency + " are there in 1 USD? ");
 		convertionRate = input.nextDouble();
 		System.out.print("");
@@ -109,7 +112,8 @@ public class TripPlanner {
 		
 		System.out.println("If you are travelling for " + days + " days that is the same as " + days * 24 + " hours or " + days * 24 * 60 + " minutes.");
 		System.out.println("If you are going to spend $" + money + " USD, that means per day you can spend up to $" + dailyBudgetUSD + " USD.");
-		System.out.println("Your total budget in " + currency + " is " + totalBudgetCurrency + currency + ", which per day is " + dailyBudgetCurrency + currency);
+		System.out.println("Your total budget in " + currency + " is " + totalBudgetCurrency + " " + currency + ", which per day is " + dailyBudgetCurrency + " " + currency);
+		System.out.println();
 		System.out.println("***********");
 		
 		
@@ -131,6 +135,7 @@ public class TripPlanner {
 		localTimeAtMidnight = (0 + difference) % 24;
 		localTimeAtNoon = (12 + difference) % 24;
 		System.out.println("That means that when it is midnight at home, it will be " + localTimeAtMidnight + ":00 in your travel destination, and when it is noon at home it will be " + localTimeAtNoon + ":00.");
+		System.out.println();
 		System.out.println("***********");
 	}
 		
@@ -154,10 +159,10 @@ public class TripPlanner {
 
 	/*	PENDING
 	 * 
-		Part 6 � Hacker Problem - How Far?
-				For extra fun, calculate the distance between the user�s home and their travel destination using the Haversine formula. https://en.wikipedia.org/wiki/Haversine_formula To do this you�ll need to ask the user to enter the longitude and latitude for their home and their travel destination. You�ll also need to do some pretty fancy math.
+		Part 6 - Hacker Problem - How Far?
+				For extra fun, calculate the distance between the user's home and their travel destination using the Haversine formula. https://en.wikipedia.org/wiki/Haversine_formula To do this you'll need to ask the user to enter the longitude and latitude for their home and their travel destination. You'll also need to do some pretty fancy math.
 
-				To do fancy math in Java (cos, sin, squared etc�) you can use the Math Class. Here is the documentation for that: https://docs.oracle.com/javase/7/docs/api/java/lang/Math.html All the code to accomplish the hacker problem should be in its own method.
+				To do fancy math in Java (cos, sin, squared etc...) you can use the Math Class. Here is the documentation for that: https://docs.oracle.com/javase/7/docs/api/java/lang/Math.html All the code to accomplish the hacker problem should be in its own method.
 	*/	
 		
 	}
