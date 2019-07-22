@@ -24,9 +24,7 @@ public class Menu {
 			System.out.println("3.- Crypto.");
 			System.out.println("4.- Maze Runner.");
 			System.out.println("5.- Exit.");
-			
 			option = inputMenu.nextInt();
-			
 			System.out.println("\n");
 			
 			switch (option) {
@@ -47,15 +45,13 @@ public class Menu {
 					TimeUnit.SECONDS.sleep(2);
 					break;
 				default:
+					System.out.println("Invalid option.");
 					break;
 			}
-
-			System.out.println("\n\n\n");
-			
+			System.out.println("\n\n");
 		} while (option != 5);
 		
 		inputMenu.close();
-
 	}
 	
 }

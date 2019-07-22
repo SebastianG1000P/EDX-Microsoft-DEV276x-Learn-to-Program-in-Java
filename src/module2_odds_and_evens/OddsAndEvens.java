@@ -14,23 +14,19 @@ public class OddsAndEvens {
 		boolean totalIsOdds;
 		String winner;
 		
-		
-		// Greet the user and asks them to pick odds or evens.
-		
 		System.out.println("Let's play a game called 'Odds and Evens'.");
 		System.out.print("What is your name? ");
 		player = input.nextLine();
-		System.out.print("Hi " + player + ", which do you choose? (O)dds or (E)vens? ");
+		System.out.print("Hi, " + player + ". Which do you choose? (O)dds or (E)vens? ");
 		option = input.next();
+		
 		if (option.equalsIgnoreCase("O")) {
 			System.out.println(player + " has picked odds! The computer will be evens.");
 		} else if (option.equalsIgnoreCase("E")) {
 			System.out.println(player + " has picked evens! The computer will be odds.");
 		}
+		
 		System.out.println("--------------------------------------------------");
-		
-		
-		// Asks the user how many fingers they'll play, and picks a random number of fingers for the computer to play.
 		
 		System.out.print("How many \"fingers\" do you put out? " );
 		fingersPlayer = input.nextInt();
@@ -39,12 +35,8 @@ public class OddsAndEvens {
 		System.out.println("The computer plays " + fingersComputer + " \"fingers\".");
 		System.out.println("--------------------------------------------------");
 		
-		// Determine and report the winner.
-		
 		fingersTotal = fingersPlayer + fingersComputer;
 		System.out.println(fingersPlayer + " + " + fingersComputer + " = " + fingersTotal);
-		
-		// Determines the winner.
 		
 		totalIsOdds = fingersTotal % 2 == 1;
 		
@@ -63,13 +55,8 @@ public class OddsAndEvens {
 				winner = player;
 			}
 		}
-		
 		System.out.println("That means " + winner + " wins!");
-		
 		System.out.println("--------------------------------------------------");
-		
 	}
-		
-		
 }
 

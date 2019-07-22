@@ -2,7 +2,15 @@ Instructions taken from online course DEV276x: Learn to Program in Java
 
 ### Note:
 
- "Part 4 - Putting it all together" mentions an "obify" method, but its workings are not described in the instructions, so I did not implement it.
+ "Part 4 - Putting it all together" mentions an "obify" method, but its workings are not described in the instructions, so it's 
+ not implemented here.
+
+These are the instructions for obify() according to a user who shared them on a discussion 
+board (only for reference):
+
+> Our next method will be called obify. This will take in the normalized text
+> and insert a capital O and capital B in front of every vowel, including y,
+> and return the obify text.
 
 ---
 
