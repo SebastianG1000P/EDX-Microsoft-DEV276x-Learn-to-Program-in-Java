@@ -52,6 +52,17 @@ public class Crypto {
 		} while (option != 3);
 	}
 
+	
+	public static String encryptString (String originalText, int shift, int groupSize) {
+		String encryptedString = "";
+		
+		encryptedString = normalizeText(originalText);
+		encryptedString = caesarify(encryptedString, shift);
+		encryptedString = groupify(encryptedString, groupSize);
+		return encryptedString;
+	}
+
+	
 	public static String normalizeText(String originalText) {
 			String normalizedText = "";
 			String currentLetter = "";
@@ -65,6 +76,7 @@ public class Crypto {
 			return normalizedText;
 	}
 
+	
 	public static String shiftAlphabet (int shift) {
 		String shiftedAlphabet = "";
 		int alphabetLength = unshiftedAlphabet.length();
@@ -80,6 +92,7 @@ public class Crypto {
 		return shiftedAlphabet;
 	}
 
+	
 	public static String caesarify (String normalizedText, int shift) {
 		String caesarifiedText = "";
 		String currentLetterUnshifted = "";
@@ -97,7 +110,8 @@ public class Crypto {
 		}
 		return caesarifiedText;
 	}
-		
+
+	
 	public static String groupify (String caesarifiedText, int groupSize) {
 		String groupifiedText = "";
 		String currentLetter = "";
@@ -123,18 +137,18 @@ public class Crypto {
 		
 		return groupifiedText;
 	}
+
 	
-	
-	public static String encryptString (String originalText, int shift, int groupSize) {
-		String encryptedString = "";
+	public static String decryptString ( String originalText, int shift) {
+		String decryptedText = "";
 		
-		encryptedString = normalizeText(originalText);
-		encryptedString = caesarify(encryptedString, shift);
-		encryptedString = groupify(encryptedString, groupSize);
-		return encryptedString;
+		decryptedText = ungroupify(originalText);
+		decryptedText = normalizeText(decryptedText);
+		decryptedText = caesarify(decryptedText, - shift);
+		return decryptedText;
 	}
-	
-	
+
+
 	public static String ungroupify(String encryptedText) {
 		String ungroupifiedText = "";
 		String currentLetter = "";
@@ -146,13 +160,6 @@ public class Crypto {
 			}
 		}
 		return ungroupifiedText;
-}
-	
-	public static String decryptString ( String originalText, int shift) {
-		String decryptedText = "";
-		
-		decryptedText = ungroupify(originalText);
-		decryptedText = caesarify(decryptedText, - shift);
-		return decryptedText;
 	}
+	
 }

@@ -2,15 +2,8 @@ Instructions taken from online course DEV276x: Learn to Program in Java
 
 ### Note:
 
- "Part 4 - Putting it all together" mentions an "obify" method, but its workings are not described in the instructions, so it's 
- not implemented here.
+ There are some issues with the instructions provided by Microsoft that are detailed at the end of this README.
 
-These are the instructions for obify() according to a user who shared them on a discussion 
-board (only for reference):
-
-> Our next method will be called obify. This will take in the normalized text
-> and insert a capital O and capital B in front of every vowel, including y,
-> and return the obify text.
 
 ---
 
@@ -81,7 +74,7 @@ Write a method called **groupify** which takes two parameters. The first paramet
 - Note that we use lower-case ‘x’ here because it is not a member of the (upper-case) alphabet we’re working with. If we used upper-case ‘X’ here we would not be able to distinguish between an X that was part of the code and a padding X.
 
 
-### Part 4 - Putting it all together
+### Part 4 - Putting it all together <sup><a name="bookmark1">[1](#footnote1)</a></sup>
 
 Write a function called **encryptString** which takes three parameters: a string to be encrypted, an integer shift value, and a code group size. Your method should return a string which is its cyphertext equivalent. Your function should do the following:
 
@@ -97,7 +90,7 @@ This part is not required for course credit.
 
 Write a method called **ungroupify** which takes one parameter, a string containing space-separated groups, and returns the string without any spaces. So if you call `ungroupify(“THI SIS ARE ALL YGR EAT SEN TEN CEx”)` you will return “THISISAREALLYGREATSENTENCE”
 
-Now write a function called **decryptString** which takes three parameters: a string to be decrypted and the integer shift value used to encrypt the string, and returns a string which contains the (normalized) plaintext. You can assume the string was encrypted by a call to `encryptString()`.
+Now write a function called **decryptString** which takes three <sup><a name="bookmark2">[2](#footnote2)</a></sup> parameters: a string to be decrypted and the integer shift value used to encrypt the string, and returns a string which contains the (normalized) plaintext. You can assume the string was encrypted by a call to `encryptString()`.
 
 So if you were to call
 
@@ -107,3 +100,23 @@ String plaintext = decryptString(cyphertext, 5);
 ```
 
 … then you’ll get back the normalized input string “WHOWILLWINTHEELECTION”.
+
+
+---
+
+### Footnotes:
+
+ <a name="footnote1"> 1. </a> [^](#bookmark1) "Part 4 - Putting it all together" mentions an "obify" method, but its workings are not described in the instructions, so it's 
+ not implemented here.
+
+  These are the instructions for obify() according to a user who shared them on a discussion 
+board (only for reference):
+
+> Our next method will be called obify. This will take in the normalized text
+> and insert a capital O and capital B in front of every vowel, including y,
+> and return the obify text.
+
+<a name="footnote2">2.</a> [^](#bookmark2)
+> Now write a function called **decryptString** which takes **three** parameters: a string to be decrypted and the integer shift value used to encrypt the string
+
+The method only takes two paremeters, not three.

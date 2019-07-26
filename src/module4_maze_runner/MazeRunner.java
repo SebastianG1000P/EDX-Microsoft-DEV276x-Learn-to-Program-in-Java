@@ -4,7 +4,7 @@ import java.util.Scanner;
 public class MazeRunner {
 
 public static Scanner input = new Scanner(System.in);
-public static Maze myMap = new Maze();
+public static Maze myMap;
 public static String controls = "";
 public static String up = "";
 public static String down = "";
@@ -13,6 +13,7 @@ public static String right = "";
 public static String direction = "";
 
 	public static void main (String[] args) {
+		myMap = new Maze();
 		int moves = 0;
 		boolean gameOver = false;
 		
@@ -155,6 +156,7 @@ public static String direction = "";
 		return direction;
 	}
 
+	
 	public static void navigatePit(String dir) {
 		String jump = "";
 		
@@ -195,7 +197,6 @@ public static String direction = "";
 				message = "";
 				break;				
 		}
-		
 		return message;
 	}
 	

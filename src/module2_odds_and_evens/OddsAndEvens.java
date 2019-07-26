@@ -28,9 +28,18 @@ public class OddsAndEvens {
 		
 		System.out.println("--------------------------------------------------");
 		
-		System.out.print("How many \"fingers\" do you put out? " );
-		fingersPlayer = input.nextInt();
-		Random rand = new Random();		//		Creates object to obtain random numbers.
+		do {
+			System.out.print("How many \"fingers\" do you put out? " );
+			fingersPlayer = input.nextInt();
+			if (fingersPlayer > 5) {
+				System.out.println("Hey!");
+				System.out.println("How many hands are you using?");
+				System.out.println("You can only put out 0 to 5 fingers.");
+			}
+		} while (fingersPlayer > 5);
+		
+		
+		Random rand = new Random();
 		fingersComputer = rand.nextInt(6);
 		System.out.println("The computer plays " + fingersComputer + " \"fingers\".");
 		System.out.println("--------------------------------------------------");

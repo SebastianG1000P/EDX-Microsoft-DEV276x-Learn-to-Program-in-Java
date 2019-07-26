@@ -65,7 +65,7 @@ Show the time it will be in the travel destination when it is midnight at home a
 All the code to accomplish Part 3 should be in its own method.
 
 ### Part 4 – Country Area
-Only three countries in the world us the "imperial system", so most countries report their distances in kilometers. For this part, ask the user the area of their travel destination country in km^2. Then you’ll want to convert that to miles^2 and report those results back to the user.
+Only three countries in the world us the "imperial system", so most countries report their distances in kilometers. For this part, ask the user the area of their travel destination country in km<sup>2</sup>. Then you’ll want to convert that to miles<sup>2</sup> and report those results back to the user.
 
 All the code to accomplish Part 4 should be in its own method.
 

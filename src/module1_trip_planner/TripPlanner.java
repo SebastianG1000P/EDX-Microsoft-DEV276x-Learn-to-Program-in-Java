@@ -26,6 +26,7 @@ public class TripPlanner {
 		System.out.println("Great! " + destination + " sounds like a great trip!");
 	}
 	
+	
 	public static void timeAndBudget() {
 		int days;
 		Double money;
@@ -61,6 +62,7 @@ public class TripPlanner {
 		System.out.println("***********");
 	}
 	
+	
 	public static void timeDifference() {
 		int difference;
 		int localTimeAtMidnight;
@@ -79,6 +81,7 @@ public class TripPlanner {
 		System.out.println("***********");
 	}
 		
+	
 	public static void countryArea() {
 		double area;
 		double areaMiles;
