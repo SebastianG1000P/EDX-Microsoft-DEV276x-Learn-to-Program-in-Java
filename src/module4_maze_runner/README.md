@@ -2,7 +2,7 @@ Instructions taken from online course DEV276x: Learn to Program in Java
 
 ### NOTE:
 
-Instructions and code provided by Microsoft contain some mistakes that must be corrected to propperly finish the project and allow the user to solve the maze. Said mistakes are pointed out in this README and their explanations/solutions listed at the end.
+Instructions and code provided by Microsoft contain some mistakes that must be corrected to properly finish the project and allow the user to solve the maze. Said mistakes are pointed out in this README and their explanations/solutions listed at the end.
 
 
 ---
@@ -11,7 +11,7 @@ Instructions and code provided by Microsoft contain some mistakes that must be c
 
 For your final project you will be writing the code for **"MazeRunner"**, a program that navigates through a given maze. The code for the Maze is already written, and provided in "Maze.java". You just need to write the code that uses Maze and decides how to move through it.
 
-### Part 1 - Let the user solve the maze **[ref. 1]**
+### Part 1 - Let the user solve the maze <sup><a name="bookmark1">[1](#footnote1)</a></sup>
 
 For this stage, you will need to do the following steps:
 
@@ -81,7 +81,7 @@ x . . . . . . . . . . . . . . . . . . .
 
   `Sorry, you’ve hit a wall.`
   
-  Here is an example of what happens when the user tries to move onto a space, but hits a wall: **[ref. 2]**
+  Here is an example of what happens when the user tries to move onto a space, but hits a wall: <sup><a name="bookmark2">[2](#footnote2)</a></sup>
 
 ```
 Where would you like to move? (R,L,U,D)? R
@@ -171,7 +171,7 @@ If the user manages to make it out before they run out of moves add a line to th
 
 where XX should be replaced with the user’s move count
 
-### Part 3 – Watch out for pits **[ref. 3]**
+### Part 3 – Watch out for pits <sup><a name="bookmark1">[3](#footnote3)</a></sup>
 
 As you move through the maze you might come across pits. If your user moves onto a square with a pit they will fall and lose the game. Instead you want to make sure that you are looking ahead and letting them know if there is a pit in front of them. If there is, you should give them the option to jump over it in the direction they were heading. Thankfully the Maze class already has the methods you need to do this.
 
@@ -240,9 +240,9 @@ Watch out! There's a pit ahead. Jump it?: Y
 
 ---
 
-### Reference:
+### Footnotes:
 
-1. Even though the steps described in the instructions come in the following order:
+<a name="footnote1">1.</a> [^](#bookmark1) Even though the steps described in the instructions come in the following order:
 
   * Part 1 - Let the user solve the maze
 	
@@ -252,8 +252,8 @@ Watch out! There's a pit ahead. Jump it?: Y
 	
   actually, the user can't solve the maze without jumping over pits. Therefore, part 3 must be implemented before finishing part 1.
 
-2. Part 1.6 shows a map that does not correspond to the one provided in the code, since it does not show the pit that appears when you start and move twice to the right.
+<a name="footnote">2.</a> [^](#bookmark2) Part 1.6 shows a map that does not correspond to the one provided in the code, since it does not show the pit that appears when you start and move twice to the right.
 
-3. Maze.jar, provided by Microsoft, contains a mistake where it introduces a pit that forces the user to jump into a wall, which is not a valid movement, and makes it impossible for the user to finish the maze. Therefore, that [line](https://github.com/SebastianG1000P/EDX-Microsoft-DEV276x-Learn-to-Program-in-Java/blob/16941d8c6c2a004dec20dd6f6f530c8890df23bb/src/module4_maze_runner/Maze.java#L300) is commented out and said pit removed.
+<a name="footnote">3.</a> [^](#bookmark3) Maze.jar, provided by Microsoft, contains a mistake where it introduces a pit that forces the user to jump into a wall, which is not a valid movement, and makes it impossible for the user to finish the maze. Therefore, that [line](https://github.com/SebastianG1000P/EDX-Microsoft-DEV276x-Learn-to-Program-in-Java/blob/16941d8c6c2a004dec20dd6f6f530c8890df23bb/src/module4_maze_runner/Maze.java#L300) is commented out and said pit removed.
 
 

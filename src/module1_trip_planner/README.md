@@ -65,7 +65,7 @@ Show the time it will be in the travel destination when it is midnight at home a
 All the code to accomplish Part 3 should be in its own method.
 
 ### Part 4 – Country Area
-Only three countries in the world us the "imperial system", so most countries report their distances in kilometers. For this part, ask the user the area of their travel destination country in km^2. Then you’ll want to convert that to miles^2 and report those results back to the user.
+Only three countries in the world us the "imperial system", so most countries report their distances in kilometers. For this part, ask the user the area of their travel destination country in km<sup>2</sup>. Then you’ll want to convert that to miles<sup>2</sup> and report those results back to the user.
 
 All the code to accomplish Part 4 should be in its own method.
 
@@ -87,7 +87,14 @@ If you follow the above steps you should find that any of your answers are not l
 
 This code will need to be added to each of the methods you wrote for parts II, III and IV.
 
+
+
+---
+
+*(This part is not required to complete the course and not implemented in this repository)*
+
 ### Part 6 – Hacker Problem - How Far?
+
 For extra fun, calculate the distance between the user’s home and their travel destination using the Haversine formula. https://en.wikipedia.org/wiki/Haversine_formula To do this you’ll need to ask the user to enter the longitude and latitude for their home and their travel destination. You’ll also need to do some pretty fancy math.
 
 To do fancy math in Java (cos, sin, squared etc…) you can use the Math Class. Here is the documentation for that: https://docs.oracle.com/javase/7/docs/api/java/lang/Math.html All the code to accomplish the hacker problem should be in its own method.

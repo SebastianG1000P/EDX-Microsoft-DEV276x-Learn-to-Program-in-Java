@@ -4,18 +4,16 @@ import java.util.Scanner;
 public class MazeRunner {
 
 public static Scanner input = new Scanner(System.in);
-public static Maze myMap = new Maze();
+public static Maze myMap;
 public static String controls = "";
-public static String move = "";
 public static String up = "";
 public static String down = "";
 public static String left = "";
 public static String right = "";
 public static String direction = "";
-public static boolean wall = false;
-
 
 	public static void main (String[] args) {
+		myMap = new Maze();
 		int moves = 0;
 		boolean gameOver = false;
 		
@@ -24,14 +22,11 @@ public static boolean wall = false;
 		do {
 			userMove();
 			System.out.println("----------------------------------------");
-								
 			if (!gameOver) {
 				++moves;
 				System.out.println(movesMessage(moves));
 			}
-			
 			gameOver = ( direction.equals("X") || (myMap.didIWin()) || (moves == 100) );
-			
 		} while ( !gameOver );
 
 		if (direction.equals("X")) {
@@ -60,14 +55,11 @@ public static boolean wall = false;
 			System.out.println(" GAME OVER");
 			System.out.println();
 		}
-			
-		
-
 	}
 	
 	
 	public static void intro() {
-		int keyboardLayout = 0;
+		String keyboardLayout = "";
 		
 		System.out.println("Welcome to Maze Runner!");
 		System.out.println();
@@ -81,10 +73,10 @@ public static boolean wall = false;
 		
 		do {
 			System.out.print("Enter your choice (1/2): ");
-			keyboardLayout = input.nextInt();
-		} while ( keyboardLayout != 1 && keyboardLayout != 2);
+			keyboardLayout = input.next();
+		} while ( !keyboardLayout.equals("1") && !keyboardLayout.equals("2") );
 		
-		if (keyboardLayout == 1) {
+		if (keyboardLayout.equals("1")) {
 			controls = "UDLRX";
 			up = "U";
 			down = "D";
@@ -105,8 +97,8 @@ public static boolean wall = false;
 	
 	
 	public static String userMove() {
-		
-		
+		boolean wall = false;		
+	
 		do {
 			System.out.print("Where would you like to move? (" + controls + ")? ");
 			direction = input.next().toUpperCase();
@@ -161,14 +153,14 @@ public static boolean wall = false;
 		}
 		
 		myMap.printMap();
-		wall = false;
 		return direction;
 	}
 
+	
 	public static void navigatePit(String dir) {
 		String jump = "";
 		
-		System.out.print("Watch out! There's a pit ahead. Jump it?: ");
+		System.out.print("Watch out! There's a pit ahead. Jump it? (Y): ");
 		jump = input.next().toUpperCase();
 		
 		if (jump.startsWith("Y")) {
@@ -205,7 +197,6 @@ public static boolean wall = false;
 				message = "";
 				break;				
 		}
-		
 		return message;
 	}
 	
