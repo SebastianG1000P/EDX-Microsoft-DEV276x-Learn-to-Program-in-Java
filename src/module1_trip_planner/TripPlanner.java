@@ -2,7 +2,8 @@ package module1_trip_planner;
 import java.util.Scanner;
 
 public class TripPlanner {
-	public static Scanner input = new Scanner(System.in);
+	private static Scanner input = new Scanner(System.in);
+	private static Scanner inputLine = new Scanner(System.in);
 	
 	public static void main (String[] args) {
 		greeting();
@@ -20,9 +21,9 @@ public class TripPlanner {
 		System.out.println("Welcome to Vacation Planner!");
 		System.out.println();
 		System.out.print("What is your name? ");
-		name = input.nextLine();
+		name = inputLine.nextLine();
 		System.out.print("Nice to meet you, " + name + ". Where are you travelling to? ");
-		destination = input.nextLine();
+		destination = inputLine.nextLine();
 		System.out.println("Great! " + destination + " sounds like a great trip!");
 	}
 	

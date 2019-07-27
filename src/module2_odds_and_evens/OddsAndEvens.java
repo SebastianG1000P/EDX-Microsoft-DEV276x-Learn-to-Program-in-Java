@@ -3,7 +3,8 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class OddsAndEvens {
-	public static Scanner input = new Scanner(System.in);
+	private static Scanner input = new Scanner(System.in);
+	private static Scanner inputLine = new Scanner(System.in);
 	
 	public static void main (String[] args) {
 		String player;
@@ -16,10 +17,13 @@ public class OddsAndEvens {
 		
 		System.out.println("Let's play a game called 'Odds and Evens'.");
 		System.out.print("What is your name? ");
-		player = input.nextLine();
-		System.out.print("Hi, " + player + ". Which do you choose? (O)dds or (E)vens? ");
-		option = input.next();
-		
+		player = inputLine.nextLine();
+		System.out.print("Hi, " + player + ". ");
+		do {
+			System.out.print("Which do you choose? (O)dds or (E)vens? ");
+			option = input.next();
+		} while ( !option.equalsIgnoreCase("O") && !option.equalsIgnoreCase("E") );
+			
 		if (option.equalsIgnoreCase("O")) {
 			System.out.println(player + " has picked odds! The computer will be evens.");
 		} else if (option.equalsIgnoreCase("E")) {

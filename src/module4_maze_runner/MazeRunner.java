@@ -59,7 +59,7 @@ public static String direction = "";
 	
 	
 	public static void intro() {
-		int keyboardLayout = 0;
+		String keyboardLayout = "";
 		
 		System.out.println("Welcome to Maze Runner!");
 		System.out.println();
@@ -73,10 +73,10 @@ public static String direction = "";
 		
 		do {
 			System.out.print("Enter your choice (1/2): ");
-			keyboardLayout = input.nextInt();
-		} while ( keyboardLayout != 1 && keyboardLayout != 2);
+			keyboardLayout = input.next();
+		} while ( !keyboardLayout.equals("1") && !keyboardLayout.equals("2") );
 		
-		if (keyboardLayout == 1) {
+		if (keyboardLayout.equals("1")) {
 			controls = "UDLRX";
 			up = "U";
 			down = "D";
